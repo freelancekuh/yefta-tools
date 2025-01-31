@@ -1,0 +1,79 @@
+{
+  "cookies": [
+    {
+      "name": "eps_sid",
+      "value": "935fe6de91f2913447d5860dc11d2819c248cdca",
+      "domain": ".ticketmaster.com",
+      "path": "/",
+      "expires": 1735839212,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.1005702949.1733247213",
+      "domain": ".ticketmaster.com",
+      "path": "/",
+      "expires": 1741023212,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "OptanonGroups",
+      "value": ",C0001,C0003,C0002,C0004,",
+      "domain": ".ticketmaster.com",
+      "path": "/",
+      "expires": 1764783213,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Tue+Dec+03+2024+17%3A33%3A33+GMT%2B0000+(Coordinated+Universal+Time)&version=202408.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=be141459-214b-466c-9a1c-c530b2de4465&interactionCount=0&isAnonUser=1&landingPath=https%3A%2F%2Fwww.ticketmaster.com%2Flinkin-park-from-zero-world-tour-baltimore-maryland-05-03-2025%2Fevent%2F1500616DCB7C3300&groups=C0001%3A1%2CC0003%3A1%2CC0002%3A1%2CC0004%3A1",
+      "domain": ".ticketmaster.com",
+      "path": "/",
+      "expires": 1764783213,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_GRECAPTCHA",
+      "value": "09ANOXeZzIdtHUA0HIKUFozlkiAaW9_Os9slHuISL0J9KVgTvEMP3l85vRY5uVldgXIc30Hdp-V-hVMFa4Qffk1JA",
+      "domain": "www.google.com",
+      "path": "/recaptcha",
+      "expires": 1748799213,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.ticketmaster.com",
+      "localStorage": [
+        {
+          "name": "_grecaptcha",
+          "value": "09ANOXeZyFgQo-zT0sB6PjDB14s7nNs8gPleBWonxswM3CbelN1a32wAgX1pDA3FQ-bhr1XbGd7nImQSh9IJql07iwb4DvT8RWjgzo-dnseHg39cxvscZygYFmSgO6i7JD"
+        }
+      ]
+    },
+    {
+      "origin": "https://www.google.com",
+      "localStorage": [
+        {
+          "name": "rc::f",
+          "value": "0aAIxjiN1nVfFNvk8rnNOM5iAanWBH2abNVOIW1y4Iv07DXKM0xILyCWj0f06h3AsdSwBC4jk"
+        },
+        {
+          "name": "rc::a",
+          "value": "MmY4MHhvMTV0ZHh2Zg=="
+        }
+      ]
+    }
+  ],
+  "timestamp": "2024-12-03T17:33:50.630641"
+}

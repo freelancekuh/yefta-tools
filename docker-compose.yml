@@ -1,0 +1,80 @@
+services:
+  # MongoDB with credentials
+  yefta_mongo:
+    image: mongo:latest
+    container_name: yefta_mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=yefta
+      - MONGO_INITDB_ROOT_PASSWORD=MongoYefta123!
+      - MONGO_INITDB_DATABASE=yefta-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - yefta_mongo_data:/data/db
+      - ./mongodb-init.sh:/docker-entrypoint-initdb.d/mongodb-init.sh
+    networks:
+      - yefta_network
+    restart: unless-stopped
+
+  # Redis with password
+  yefta_redis:
+    image: redis:latest
+    container_name: yefta_redis
+    command: ["redis-server", "--requirepass", "RedisYefta123!"]
+    ports:
+      - "6379:6379"
+    networks:
+      - yefta_network
+
+  yefta_backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: yefta_backend
+    volumes:
+      - ./backend:/app
+    environment:
+      - MONGO_URI=mongodb://yefta:MongoYefta123!@mongodb:27017/yefta-db
+      - REDIS_HOST=yefta_redis
+      - REDIS_PASSWORD=RedisYefta123!
+    depends_on:
+      - yefta_mongo
+      - yefta_redis
+    ports:
+      - "8000:8000"
+    networks:
+      - yefta_network
+    command: >
+      sh -c "
+        uvicorn main:app --host 0.0.0.0 --reload &
+        celery -A tasks worker --loglevel=INFO
+      "
+
+  # Frontend (Next.js)
+  yefta_frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: yefta_frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - yefta_backend
+    networks:
+      - yefta_network
+    environment:
+      - NODE_ENV=production
+    command: |
+      sh -c "npm run build && npm run start"
+
+networks:
+  yefta_network:
+    driver: bridge
+
+volumes:
+  yefta_mongo_data:
+    driver: local
